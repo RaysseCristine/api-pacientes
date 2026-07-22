@@ -2,6 +2,7 @@ package com.raysse.apipacientes.controller;
 
 import com.raysse.apipacientes.model.Paciente;
 import com.raysse.apipacientes.service.PacienteService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -28,8 +29,14 @@ public class PacienteController {
         }
 
         @GetMapping("/{id}")
-        public Paciente buscarPacientePorId(@PathVariable Long id){
-                return pacienteService.buscarPacientePorId(id);
+        public ResponseEntity<Paciente> buscarPacientePorId(@PathVariable Long id) {
+
+                Paciente paciente = pacienteService.buscarPacientePorId(id);
+
+                if (paciente == null) {
+                        return ResponseEntity.notFound().build();
+                }
+                return ResponseEntity.ok(paciente);
         }
 }
 
