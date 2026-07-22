@@ -1,6 +1,7 @@
 package com.raysse.apipacientes.controller;
 
 import com.raysse.apipacientes.model.Paciente;
+import com.raysse.apipacientes.service.PacienteService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,23 +11,20 @@ import java.util.List;
 @RequestMapping("/pacientes")
 public class PacienteController {
 
-        List<Paciente> pacientes = new ArrayList<>();
+        private final PacienteService pacienteService;
 
-        public PacienteController(){
-                pacientes.add(new Paciente(1L, "Maia", 30));
-                pacientes.add(new Paciente(2L, "João", 28));
-                pacientes.add(new Paciente(3L, "Liz", 25));
+        public PacienteController(PacienteService pacienteService){
+                 this.pacienteService = pacienteService;
         }
 
         @GetMapping
         public List<Paciente> listarPacientes(){
-                return pacientes;
+                return pacienteService.listarPacientes();
         }
 
         @PostMapping
         public Paciente cadastrarPaciente(@RequestBody Paciente paciente){
-                pacientes.add(paciente);
-                return paciente;
+                return pacienteService.cadastrarPaciente(paciente);
         }
 }
 

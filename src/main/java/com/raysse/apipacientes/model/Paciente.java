@@ -1,8 +1,5 @@
 package com.raysse.apipacientes.model;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 public class Paciente {
 
         private Long id;
@@ -28,13 +25,9 @@ public class Paciente {
      }
 
      public Integer getIdade(){
+
          return idade;
      }
 
-    @PostMapping
-    public Paciente cadastrarPaciente(@RequestBody Paciente paciente){
-
-            return paciente;
-    }
 }
 
