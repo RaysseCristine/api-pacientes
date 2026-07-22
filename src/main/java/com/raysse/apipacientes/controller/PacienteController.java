@@ -26,5 +26,10 @@ public class PacienteController {
         public Paciente cadastrarPaciente(@RequestBody Paciente paciente){
                 return pacienteService.cadastrarPaciente(paciente);
         }
+
+        @GetMapping("/{id}")
+        public Paciente buscarPacientePorId(@PathVariable Long id){
+                return pacienteService.buscarPacientePorId(id);
+        }
 }
 

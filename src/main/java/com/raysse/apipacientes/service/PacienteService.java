@@ -25,4 +25,13 @@ public class PacienteService {
         pacientes.add(paciente);
         return paciente;
     }
+
+    public Paciente buscarPacientePorId(Long id){
+        for (Paciente paciente : pacientes){
+            if(paciente.getId().equals(id)){
+                return paciente;
+            }
+        }
+        return null;
+    }
 }
