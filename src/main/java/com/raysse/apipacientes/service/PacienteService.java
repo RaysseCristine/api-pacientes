@@ -49,4 +49,17 @@ public class PacienteService {
         return paciente;
     }
 
+    public Paciente deletarPaciente(Long id){
+
+        Paciente paciente = buscarPacientePorId(id);
+
+        if (paciente == null) {
+            return null;
+        }
+
+        pacientes.remove(paciente);
+
+        return paciente;
+    }
+
 }

@@ -50,5 +50,17 @@ public class PacienteController {
 
                 return ResponseEntity.ok(paciente);
         }
+
+        @DeleteMapping("/{id}")
+        public ResponseEntity<Paciente> deletarPaciente(@PathVariable Long id) {
+
+                Paciente paciente = pacienteService.deletarPaciente(id);
+
+                if(paciente == null){
+                        return ResponseEntity.notFound().build();
+                }
+
+                return ResponseEntity.ok(paciente);
+        }
 }
 
