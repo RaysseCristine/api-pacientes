@@ -36,7 +36,7 @@ public class Paciente {
          this.nome = nome;
     }
 
-    public void setIdade(Integer Idade){
+    public void setIdade(Integer idade){
          this.idade = idade;
     }
 }
