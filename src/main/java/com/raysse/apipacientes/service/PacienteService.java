@@ -34,4 +34,19 @@ public class PacienteService {
         }
         return null;
     }
+
+    public Paciente atualizarPaciente(Long id, Paciente pacienteAtualizado){
+
+        Paciente paciente = buscarPacientePorId(id);
+
+        if (paciente == null) {
+            return null;
+        }
+
+        paciente.setNome(pacienteAtualizado.getNome());
+        paciente.setIdade(pacienteAtualizado.getIdade());
+
+        return paciente;
+    }
+
 }

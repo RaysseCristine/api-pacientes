@@ -5,7 +5,6 @@ import com.raysse.apipacientes.service.PacienteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -15,7 +14,7 @@ public class PacienteController {
         private final PacienteService pacienteService;
 
         public PacienteController(PacienteService pacienteService){
-                 this.pacienteService = pacienteService;
+                this.pacienteService = pacienteService;
         }
 
         @GetMapping
@@ -36,6 +35,19 @@ public class PacienteController {
                 if (paciente == null) {
                         return ResponseEntity.notFound().build();
                 }
+                return ResponseEntity.ok(paciente);
+        }
+
+        @PutMapping("/{id}")
+        public ResponseEntity<Paciente> atualizarPaciente(@PathVariable Long id,
+                                                          @RequestBody Paciente pacienteAtualizado) {
+
+                Paciente paciente = pacienteService.atualizarPaciente(id, pacienteAtualizado);
+
+                if(paciente == null){
+                        return ResponseEntity.notFound().build();
+                }
+
                 return ResponseEntity.ok(paciente);
         }
 }

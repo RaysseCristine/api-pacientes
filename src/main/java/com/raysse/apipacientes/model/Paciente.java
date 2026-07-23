@@ -25,9 +25,19 @@ public class Paciente {
      }
 
      public Integer getIdade(){
-
          return idade;
      }
 
+    public void setId(Long Id) {
+         this.id = id;
+    }
+
+    public void setNome(String nome) {
+         this.nome = nome;
+    }
+
+    public void setIdade(Integer Idade){
+         this.idade = idade;
+    }
 }
 
