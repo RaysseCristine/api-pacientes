@@ -1,7 +1,14 @@
 package com.raysse.apipacientes.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonTypeId;
+
+@Entity
+@Table(name = "pacientes")
 public class Paciente {
 
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         private String nome;
         private Integer idade;
