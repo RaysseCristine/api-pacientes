@@ -1,7 +1,6 @@
 package com.raysse.apipacientes.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonTypeId;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "pacientes")
@@ -35,8 +34,8 @@ public class Paciente {
          return idade;
      }
 
-    public void setId(Long Id) {
-         this.id = id;
+    public void setId(Long id) {
+    this.id = id;
     }
 
     public void setNome(String nome) {
