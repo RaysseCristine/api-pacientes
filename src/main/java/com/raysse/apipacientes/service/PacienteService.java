@@ -1,38 +1,30 @@
 package com.raysse.apipacientes.service;
 
 import com.raysse.apipacientes.model.Paciente;
+import com.raysse.apipacientes.repository.PacienteRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PacienteService {
 
-    private List<Paciente> pacientes = new ArrayList<>();
+    private final PacienteRepository pacienteRepository;
 
-    public PacienteService(){
-        pacientes.add(new Paciente(1L, "Maia", 30));
-        pacientes.add(new Paciente(2L, "João", 25));
-        pacientes.add(new Paciente(3L, "Liz", 40));
+    public PacienteService(PacienteRepository pacienteRepository){
+        this.pacienteRepository = pacienteRepository;
     }
 
     public List<Paciente> listarPacientes(){
-        return pacientes;
+        return pacienteRepository.findAll();
     }
 
     public Paciente cadastrarPaciente(Paciente paciente){
-        pacientes.add(paciente);
-        return paciente;
+        return pacienteRepository.save(paciente);
     }
 
     public Paciente buscarPacientePorId(Long id){
-        for (Paciente paciente : pacientes){
-            if(paciente.getId().equals(id)){
-                return paciente;
-            }
-        }
-        return null;
+        return pacienteRepository.findById(id).orElse(null);
     }
 
     public Paciente atualizarPaciente(Long id, Paciente pacienteAtualizado){
@@ -46,7 +38,7 @@ public class PacienteService {
         paciente.setNome(pacienteAtualizado.getNome());
         paciente.setIdade(pacienteAtualizado.getIdade());
 
-        return paciente;
+        return pacienteRepository.save(paciente);
     }
 
     public Paciente deletarPaciente(Long id){
@@ -57,7 +49,7 @@ public class PacienteService {
             return null;
         }
 
-        pacientes.remove(paciente);
+        pacienteRepository.delete(paciente);
 
         return paciente;
     }
