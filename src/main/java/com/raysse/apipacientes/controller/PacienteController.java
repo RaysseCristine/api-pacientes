@@ -2,6 +2,7 @@ package com.raysse.apipacientes.controller;
 
 import com.raysse.apipacientes.model.Paciente;
 import com.raysse.apipacientes.service.PacienteService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class PacienteController {
         }
 
         @PostMapping
-        public Paciente cadastrarPaciente(@RequestBody Paciente paciente){
+        public Paciente cadastrarPaciente(@Valid @RequestBody Paciente paciente){
                 return pacienteService.cadastrarPaciente(paciente);
         }
 
