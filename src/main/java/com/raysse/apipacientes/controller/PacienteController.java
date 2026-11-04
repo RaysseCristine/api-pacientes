@@ -33,21 +33,14 @@ public class PacienteController {
 
                 Paciente paciente = pacienteService.buscarPacientePorId(id);
 
-                if (paciente == null) {
-                        return ResponseEntity.notFound().build();
-                }
                 return ResponseEntity.ok(paciente);
         }
 
         @PutMapping("/{id}")
         public ResponseEntity<Paciente> atualizarPaciente(@PathVariable Long id,
-                                                          @RequestBody Paciente pacienteAtualizado) {
+                                                          @Valid @RequestBody Paciente pacienteAtualizado) {
 
                 Paciente paciente = pacienteService.atualizarPaciente(id, pacienteAtualizado);
-
-                if(paciente == null){
-                        return ResponseEntity.notFound().build();
-                }
 
                 return ResponseEntity.ok(paciente);
         }
@@ -56,10 +49,6 @@ public class PacienteController {
         public ResponseEntity<Paciente> deletarPaciente(@PathVariable Long id) {
 
                 Paciente paciente = pacienteService.deletarPaciente(id);
-
-                if(paciente == null){
-                        return ResponseEntity.notFound().build();
-                }
 
                 return ResponseEntity.ok(paciente);
         }
